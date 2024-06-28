@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  
+  /* HTML: <div class="loader"></div> */
+.loader {
+    height: 60px;
+    aspect-ratio: 1;
+    --c:no-repeat linear-gradient(#542626 0 0);
+    background: var(--c), var(--c), var(--c), var(--c);
+    background-size: 33.4% 33.4%;
+    animation: l7 1.5s infinite linear;
+  }
+  @keyframes l7 {
+    0%,
+    5%   {background-position:0 0,50% 0,0 50%,50% 50%}
+    25%  {background-position:0 0,100% 0,0 100%,50% 50%}
+    50%  {background-position:50% 0,100% 0,0 100%,0 50%}
+    75%  {background-position:50% 0,100% 50%,0 100%,0 0}
+    95%,
+    100% {background-position:50% 0,50% 50%,0 50%,0 0} 
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.animation {
+  height: 47.5px; /* Originally 95px, now half */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(180deg);
+
+}
+
+.animation span {
+  width: 19px; /* Originally 38px, now half */
+  height: 7.5px; /* Originally 15px starting height, now half */
+  margin: 0 1px; /* Adjusted for smaller width */
+  border-radius: 3px; /* Originally 6px, now half */
+  animation: loaderr 2s infinite;
+}
+
+@keyframes loaderr {
+  0%, 100% {
+    height: 7.5px; /* Originally 15px, now half */
+    background: #0081C9;
+  }
+  25% {
+    height: 47.5px; /* Originally 95px, now half */
+    background: #FFB100;
+  }
+  50% {
+    height: 25px; /* Originally 50px, now half */
+    background: #54B435;
+  }
+  75% {
+    height: 47.5px; /* Originally 95px, now half */
+    background: #FF6464;
+  }
+}
+
+.animation span:nth-child(1) {
+  animation-delay: .2s;
+}
+.animation span:nth-child(2) {
+  animation-delay: .4s;
+}
+.animation span:nth-child(3) {
+  animation-delay: .6s;
+}
+.animation span:nth-child(4) {
+  animation-delay: .8s;
+}
+.animation span:nth-child(5) {
+  animation-delay: 1s;
+}
+
+
+
+
+/* Skeleton Loader CSS */
+.skeleton {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    animation: pulse 1s infinite ease-in-out;
+  }
+  
+  .skeleton-title {
+    height: 20px;
+    width: 60%;
+    margin-bottom: 12px;
+  }
+  
+  .skeleton-text {
+    height: 14px;
+    width: 80%;
+  }
+  
+  .skeleton-img {
+    height: 80px;
+    width: 80px;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
