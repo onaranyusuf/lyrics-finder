@@ -31,8 +31,12 @@ const SongDetail = ({ song, lyrics, loading }) => {
             <span></span>
           </div>
         </div>
+      ) : lyrics ? (
+        <pre className="whitespace-pre-wrap lg:mt-4 mt-2 bg-gray-50 p-3 rounded text-sm lg:text-base">{lyrics}</pre> 
       ) : (
-        <pre className="whitespace-pre-wrap lg:mt-4 mt-1">{lyrics}</pre>
+        <p className="text-center text-gray-500 mt-4 py-5 text-sm font-semibold">
+          Lyrics not available for this song because of using FREE api!
+        </p> 
       )}
     </div>
   );
