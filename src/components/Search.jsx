@@ -6,7 +6,7 @@ const Search = ({ onSongSelect }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [debouncedQuery, setDebouncedQuery] = useState('');
-  const [loading, setLoading] = useState(false); // Loading state'i ekleyin
+  const [loading, setLoading] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -26,14 +26,15 @@ const Search = ({ onSongSelect }) => {
   }, [debouncedQuery]);
 
   const handleSearch = async () => {
-    setLoading(true); // Arama başladığında loading'i true yap
+    setLoading(true);
     try {
-      const res = await api.search(debouncedQuery, { limit: 20 }); // Limit ayarlanabilir
-      setSearchResults(res.data);
+      const res = await api.search(debouncedQuery); // limit parametresi kaldırıldı
+      setSearchResults(res.data || []); // API yanıtına göre uyarlandı
     } catch (error) {
       console.error('Error searching songs:', error);
+      setSearchResults([]);
     } finally {
-      setLoading(false); // Arama tamamlandığında loading'i false yap
+      setLoading(false);
     }
   };
 
@@ -84,7 +85,12 @@ const Search = ({ onSongSelect }) => {
             <li
               key={result.id}
               onClick={() => {
-                onSongSelect(result);
+                onSongSelect({
+                  id: result.id,
+                  title: result.title,
+                  artist: result.artist,
+                  image: result.image,
+                });
                 setSearchResults([]);
               }}
               className="cursor-pointer p-1 hover:bg-gray-200"
